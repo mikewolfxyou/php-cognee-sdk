@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cognee\Requests;
 
 /**
- * Request for cognifying (processing) data into knowledge graphs.
+ * Request for cognify (processing) data into knowledge graphs.
  */
 readonly class CognifyRequest
 {
