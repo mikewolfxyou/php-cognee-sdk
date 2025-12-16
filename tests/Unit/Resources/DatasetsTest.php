@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cognee\Tests\Unit\Resources;
 
+use Cognee\Exceptions\CogneeException;
 use Cognee\Models\Dataset;
 use Cognee\Requests\AddDataRequest;
 use Cognee\Requests\CognifyRequest;
@@ -26,6 +27,9 @@ class DatasetsTest extends TestCase
         return new Client(['handler' => $handlerStack]);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testListReturnsArrayOfDatasets(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -46,6 +50,9 @@ class DatasetsTest extends TestCase
         $this->assertSame('Dataset 1', $result[0]->name);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testCreateReturnsDataset(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -78,6 +85,9 @@ class DatasetsTest extends TestCase
         $this->assertSame('Test Dataset', $result->name);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testDeleteDatasetReturnsTrue(): void
     {
         $mockResponse = new Response(200, [], json_encode(['success' => true]));
@@ -90,6 +100,9 @@ class DatasetsTest extends TestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testGetGraphReturnsArray(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -107,6 +120,9 @@ class DatasetsTest extends TestCase
         $this->assertArrayHasKey('edges', $result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testGetDataReturnsArray(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -121,6 +137,9 @@ class DatasetsTest extends TestCase
         $this->assertIsArray($result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testGetStatusReturnsArray(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -155,6 +174,9 @@ class DatasetsTest extends TestCase
         $this->assertSame('Data added successfully', $result->message);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testCognifyReturnsCognifyResponse(): void
     {
         $mockResponse = new Response(200, [], json_encode([
