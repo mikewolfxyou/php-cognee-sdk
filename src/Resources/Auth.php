@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cognee\Resources;
 
+use Cognee\Exceptions\CogneeException;
 use Cognee\Models\User;
 
 /**
@@ -17,7 +18,7 @@ class Auth extends AbstractResource
      * @param string $email User email
      * @param string $password User password
      * @return User
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function login(string $email, string $password): User
     {
@@ -30,10 +31,10 @@ class Auth extends AbstractResource
     }
 
     /**
-     * Logout the current user.
+     * Log out the current user.
      *
      * @return bool
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function logout(): bool
     {
@@ -47,7 +48,7 @@ class Auth extends AbstractResource
      *
      * @param array<string, mixed> $data Registration data (email, password, name, etc.)
      * @return User
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function register(array $data): User
     {
@@ -61,7 +62,7 @@ class Auth extends AbstractResource
      *
      * @param string $email User email
      * @return bool
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function forgotPassword(string $email): bool
     {
@@ -71,11 +72,11 @@ class Auth extends AbstractResource
     }
 
     /**
-     * Verify email with token.
+     * Verify email with a token.
      *
      * @param string $token Verification token
      * @return bool
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function verify(string $token): bool
     {

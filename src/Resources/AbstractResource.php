@@ -150,7 +150,7 @@ abstract class AbstractResource
         $data = json_decode($body, true);
         $message = $data['message'] ?? $data['error'] ?? 'Request failed';
 
-        $exception = match (true) {
+        throw match (true) {
             $statusCode === 401 => new AuthenticationException(
                 message: $message,
                 code: $statusCode,
@@ -188,7 +188,5 @@ abstract class AbstractResource
                 request: $request,
             ),
         };
-
-        throw $exception;
     }
 }

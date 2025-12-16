@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cognee\Resources;
 
+use Cognee\Exceptions\CogneeException;
 use Cognee\Requests\SearchRequest;
 use Cognee\Responses\SearchResponse;
 
@@ -17,7 +18,7 @@ class Search extends AbstractResource
      *
      * @param SearchRequest $request Search request
      * @return SearchResponse
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function search(SearchRequest $request): SearchResponse
     {
@@ -30,7 +31,7 @@ class Search extends AbstractResource
      * Get search history for the authenticated user.
      *
      * @return array<array<string, mixed>>
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function history(): array
     {

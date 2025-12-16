@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Cognee\Resources;
 
+use Cognee\Exceptions\CogneeException;
+
 /**
  * Permissions resource for managing permissions, roles, and tenants.
  */
@@ -15,7 +17,7 @@ class Permissions extends AbstractResource
      * @param string $principalId Principal ID (user or role)
      * @param array<string, mixed> $permissions Permissions to grant
      * @return bool
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function grantDatasetPermission(string $principalId, array $permissions): bool
     {
@@ -29,7 +31,7 @@ class Permissions extends AbstractResource
      *
      * @param array<string, mixed> $data Role data (name, description, permissions)
      * @return array<string, mixed>
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function createRole(array $data): array
     {
@@ -42,7 +44,7 @@ class Permissions extends AbstractResource
      * @param string $userId User ID
      * @param string $roleId Role ID
      * @return bool
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function assignUserToRole(string $userId, string $roleId): bool
     {
@@ -56,7 +58,7 @@ class Permissions extends AbstractResource
      *
      * @param array<string, mixed> $data Tenant data (name, description, etc.)
      * @return array<string, mixed>
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function createTenant(array $data): array
     {

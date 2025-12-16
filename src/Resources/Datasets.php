@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cognee\Resources;
 
+use Cognee\Exceptions\CogneeException;
 use Cognee\Models\Dataset;
 use Cognee\Requests\AddDataRequest;
 use Cognee\Requests\CognifyRequest;
@@ -19,7 +20,7 @@ class Datasets extends AbstractResource
      * List all datasets.
      *
      * @return array<Dataset>
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function list(): array
     {
@@ -42,7 +43,7 @@ class Datasets extends AbstractResource
      * @param string $name Dataset name
      * @param array<string, mixed>|null $metadata Dataset metadata
      * @return Dataset
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function create(string $name, ?array $metadata = null): Dataset
     {
@@ -62,7 +63,7 @@ class Datasets extends AbstractResource
      *
      * @param string $id Dataset ID
      * @return Dataset
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function getDataset(string $id): Dataset
     {
@@ -76,7 +77,7 @@ class Datasets extends AbstractResource
      *
      * @param string $id Dataset ID
      * @return bool
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function deleteDataset(string $id): bool
     {
@@ -90,7 +91,7 @@ class Datasets extends AbstractResource
      *
      * @param string $id Dataset ID
      * @return array<string, mixed>
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function getGraph(string $id): array
     {
@@ -102,7 +103,7 @@ class Datasets extends AbstractResource
      *
      * @param string $id Dataset ID
      * @return array<string, mixed>
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function getData(string $id): array
     {
@@ -114,7 +115,7 @@ class Datasets extends AbstractResource
      *
      * @param string $id Dataset ID
      * @return array<string, mixed>
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function getStatus(string $id): array
     {
@@ -126,7 +127,7 @@ class Datasets extends AbstractResource
      *
      * @param AddDataRequest $request Add data request
      * @return AddDataResponse
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function add(AddDataRequest $request): AddDataResponse
     {
@@ -140,7 +141,7 @@ class Datasets extends AbstractResource
      *
      * @param CognifyRequest $request Cognify request
      * @return CognifyResponse
-     * @throws \Cognee\Exceptions\CogneeException
+     * @throws CogneeException
      */
     public function cognify(CognifyRequest $request): CognifyResponse
     {
