@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cognee\Tests\Unit\Resources;
 
+use Cognee\Exceptions\CogneeException;
 use Cognee\Resources\Health;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
@@ -21,6 +22,9 @@ class HealthTest extends TestCase
         return new Client(['handler' => $handlerStack]);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testCheckReturnsHealthStatus(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -38,6 +42,9 @@ class HealthTest extends TestCase
         $this->assertSame('healthy', $result['status']);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testDetailedReturnsDetailedHealthStatus(): void
     {
         $mockResponse = new Response(200, [], json_encode([

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cognee\Tests\Unit\Resources;
 
+use Cognee\Exceptions\CogneeException;
 use Cognee\Resources\Permissions;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
@@ -21,6 +22,9 @@ class PermissionsTest extends TestCase
         return new Client(['handler' => $handlerStack]);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testGrantDatasetPermissionReturnsTrue(): void
     {
         $mockResponse = new Response(200, [], json_encode(['success' => true]));
@@ -36,6 +40,9 @@ class PermissionsTest extends TestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testCreateRoleReturnsArray(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -58,6 +65,9 @@ class PermissionsTest extends TestCase
         $this->assertArrayHasKey('role', $result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testAssignUserToRoleReturnsTrue(): void
     {
         $mockResponse = new Response(200, [], json_encode(['success' => true]));
@@ -70,6 +80,9 @@ class PermissionsTest extends TestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testCreateTenantReturnsArray(): void
     {
         $mockResponse = new Response(200, [], json_encode([

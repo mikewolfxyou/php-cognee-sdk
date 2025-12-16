@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cognee\Tests\Unit\Resources;
 
+use Cognee\Exceptions\CogneeException;
 use Cognee\Models\User;
 use Cognee\Resources\Auth;
 use GuzzleHttp\Client;
@@ -55,6 +56,9 @@ class AuthTest extends TestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testRegisterReturnsUser(): void
     {
         $mockResponse = new Response(200, [], json_encode([
@@ -79,6 +83,9 @@ class AuthTest extends TestCase
         $this->assertSame('new@example.com', $result->email);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testForgotPasswordReturnsTrue(): void
     {
         $mockResponse = new Response(200, [], json_encode(['success' => true]));
@@ -91,6 +98,9 @@ class AuthTest extends TestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testVerifyReturnsTrue(): void
     {
         $mockResponse = new Response(200, [], json_encode(['success' => true]));

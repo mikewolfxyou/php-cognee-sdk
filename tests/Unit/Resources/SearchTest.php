@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cognee\Tests\Unit\Resources;
 
 use Cognee\Enums\SearchType;
+use Cognee\Exceptions\CogneeException;
 use Cognee\Requests\SearchRequest;
 use Cognee\Resources\Search;
 use Cognee\Responses\SearchResponse;
@@ -75,6 +76,9 @@ class SearchTest extends TestCase
         }
     }
 
+    /**
+     * @throws CogneeException
+     */
     public function testHistoryReturnsArray(): void
     {
         $mockResponse = new Response(200, [], json_encode([
