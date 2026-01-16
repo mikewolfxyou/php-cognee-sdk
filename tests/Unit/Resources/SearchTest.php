@@ -48,7 +48,7 @@ class SearchTest extends TestCase
         $client = $this->createMockClient([$mockResponse]);
         $search = new Search($client);
 
-        $request = new SearchRequest('test query', SearchType::SEMANTIC, null, null, 10);
+        $request = new SearchRequest('test query', SearchType::CHUNKS, null, null, 10);
         $result = $search->search($request);
 
         $this->assertInstanceOf(SearchResponse::class, $result);
@@ -68,7 +68,7 @@ class SearchTest extends TestCase
         $client = $this->createMockClient([$mockResponse, $mockResponse, $mockResponse]);
         $search = new Search($client);
 
-        foreach ([SearchType::SEMANTIC, SearchType::KEYWORD, SearchType::HYBRID] as $type) {
+        foreach ([SearchType::CHUNKS, SearchType::RAG_COMPLETION, SearchType::GRAPH_COMPLETION] as $type) {
             $request = new SearchRequest('test', $type);
             $result = $search->search($request);
 

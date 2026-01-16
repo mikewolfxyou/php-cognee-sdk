@@ -70,7 +70,7 @@ class WorkflowIntegrationTest extends TestCase
         // 4. Search the knowledge graph
         $searchRequest = new SearchRequest(
             query: 'fox',
-            searchType: SearchType::SEMANTIC,
+            searchType: SearchType::CHUNKS,
             datasetIds: [$dataset->id],
             topK: 5,
         );

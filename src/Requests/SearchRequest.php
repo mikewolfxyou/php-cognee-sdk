@@ -20,7 +20,7 @@ readonly class SearchRequest
      */
     public function __construct(
         public string $query,
-        public SearchType $searchType = SearchType::SEMANTIC,
+        public SearchType $searchType = SearchType::CHUNKS,
         public ?array $datasets = null,
         public ?array $datasetIds = null,
         public int $topK = 10,
